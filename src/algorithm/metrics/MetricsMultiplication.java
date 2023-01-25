@@ -2,6 +2,9 @@ package algorithm.metrics;
 
 public class MetricsMultiplication {
     public static void main(String[] args) {
+        Utils utils = new Utils();
+
+        // input
 //        int[][] m1 = new int[][]{{1, 0}, {0, 1}};
 //        int[][] m2 = new int[][]{{1, 2}, {3, 4}};
 
@@ -11,12 +14,12 @@ public class MetricsMultiplication {
         int[][] m1 = new int[][]{{1, 1}};
         int[][] m2 = new int[][]{{1, 2, 3}, {2, 3, 4}};
 
-        printMetrics(m1);
-        printMetrics(m2);
+        utils.printMetrics(m1);
+        utils.printMetrics(m2);
         int [][] ans;
         try {
             ans = metricsMultiplication(m1, m2);
-            printMetrics(ans);
+            utils.printMetrics(ans);
         } catch (Exception e) {
         }
     }
@@ -60,15 +63,5 @@ public class MetricsMultiplication {
             }
         }
         return ans;
-    }
-
-    private static void printMetrics(int[][] metrics) {
-        for(int i = 0; i< metrics.length; i++) {
-            for (int j = 0; j < metrics[i].length; j++) {
-                System.out.print(metrics[i][j] + " ");
-            }
-            System.out.println();
-        }
-        System.out.println("=========");
     }
 }
