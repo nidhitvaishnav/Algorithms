@@ -3,10 +3,10 @@ package algorithm.divideAndConquer;
 public class MaximumSubarray {
     public static void main(String[] args) {
         findMaximumSubArrayCall();
-        findMaximumSubArrayDevideAndConquerCall();
+        findMaximumSubArrayDivideAndConquerCall();
     }
 
-    private static void findMaximumSubArrayDevideAndConquerCall() {
+    private static void findMaximumSubArrayDivideAndConquerCall() {
         // input
         int [] input = getInputArr();
 
@@ -16,7 +16,7 @@ public class MaximumSubarray {
         }
 
         // method call
-        int[] output = findMaximumSubArrayDevideAndConquer(diffArr, 0, diffArr.length - 1);
+        int[] output = findMaximumSubArrayDivideAndConquer(diffArr, 0, diffArr.length - 1);
 
         // validate
         System.out.println("To maximize the profit to " + output[2] + " user should buy on " + (output[0])
@@ -24,13 +24,32 @@ public class MaximumSubarray {
     }
 
 
-    private static int[] findMaximumSubArrayDevideAndConquer(int[] array, int low, int high) {
+    /**
+     * This solution is to find the maximum subarray using divide and conquer approach
+     * which completes the algo in O(n lg n) time complexity.
+     * In this method, we recursively divide array in left and right,and find the maximum array.
+     * Then we call crossing subArray O(n) method to find crossing max array.
+     * At the end we choose max value out of all of them.
+     *
+     *  @param array
+     *          integer diff array (diff Array: input[i+1] - input[i]
+     * @param low
+     *          lower index
+     * @param high
+     *          higher index
+     *
+     * @return integer output Array of size 3
+     *          output[0] = left index such that we find max sub array
+     *          output[1] = right index such that we find max sub array
+     *          output[2] = maximum sum value for max sub array
+     */
+    private static int[] findMaximumSubArrayDivideAndConquer(int[] array, int low, int high) {
         if (low == high) {
             return new int[]{low, high, array[low]};
         }
         int mid = (low + high)/2;
-        int[] leftAns = findMaximumSubArrayDevideAndConquer(array, low, mid);
-        int[] rightAns = findMaximumSubArrayDevideAndConquer(array, mid + 1, high);
+        int[] leftAns = findMaximumSubArrayDivideAndConquer(array, low, mid);
+        int[] rightAns = findMaximumSubArrayDivideAndConquer(array, mid + 1, high);
         int[] crossingAns = findMaximumCrossingSubArray(array, low, mid, high);
         if ((leftAns[2] >= rightAns[2]) && (leftAns[2] >= crossingAns[2])) {
             return leftAns;
@@ -42,6 +61,25 @@ public class MaximumSubarray {
         }
     }
 
+    /**
+     * This method find max crossing sub array with O(n) time complexity.
+     * Initially we find maximum left sum from array[mid ... low] and store left index where sum is max
+     * Than we find maximum right sum from array[mid+1 ... high] and store right index where sum is max
+     * Than we return left index, right index and (leftSum + rightSum)
+     * @param array
+     *          integer diff array
+     * @param low
+     *          lower index
+     * @param mid
+     *          mid index
+     * @param high
+     *          higher index
+     *
+     * @return integer output array that contains,
+     *          output[0] = left index
+     *          output[1] = right index
+     *          output[2] = left sum + right sum (max crossing sum)
+     */
     private static int[] findMaximumCrossingSubArray(int[] array, int low, int mid, int high) {
         int leftSum = Integer.MIN_VALUE;
         int sum = 0;
