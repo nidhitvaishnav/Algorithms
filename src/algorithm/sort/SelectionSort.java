@@ -1,15 +1,22 @@
 package algorithm.sort;
 
+import utils.CommonUtils;
+
 import java.util.Arrays;
 
 public class SelectionSort {
+    private static CommonUtils COMMON_UTILS = new CommonUtils();
 
     public static void main(String args[]) {
         int[] arr = {5, 2, 4, 6, 1, 3};
 
+        sort(Arrays.copyOf(arr, arr.length));
+    }
+
+    private static void sort(int[] arr) {
         System.out.println("Arr before calling selection sort: " + Arrays.toString(arr));
 
-        sort(arr);
+        selectionSort(arr);
 
         System.out.println("Arr after calling selection sort: " + Arrays.toString(arr));
     }
@@ -20,7 +27,7 @@ public class SelectionSort {
      * @param arr
      *      input array on which sorting is being performed
      */
-    private static void sort(int[] arr) {
+    private static void selectionSort(int[] arr) {
         // scan entire array with i as pivot
         for (int i = 0; i < arr.length - 1; i++) {
             int minIndex = i;
@@ -31,9 +38,7 @@ public class SelectionSort {
                 }
             }
             // swap values of arr[i] and arr[minIndex]
-            int temp = arr[i];
-            arr[i] = arr[minIndex];
-            arr[minIndex] = temp;
+            COMMON_UTILS.swap(arr, i, minIndex);
         }
     }
 }

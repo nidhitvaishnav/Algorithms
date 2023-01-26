@@ -1,6 +1,6 @@
-package algorithm.metrics;
+package utils;
 
-public class Utils {
+public class MetricsUtils {
     public static void printMetrics(int[][] metrics) {
         for(int i = 0; i< metrics.length; i++) {
             for (int j = 0; j < metrics[i].length; j++) {

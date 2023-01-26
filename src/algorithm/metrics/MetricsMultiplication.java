@@ -1,8 +1,10 @@
 package algorithm.metrics;
 
+import utils.MetricsUtils;
+
 public class MetricsMultiplication {
     public static void main(String[] args) {
-        Utils utils = new Utils();
+        MetricsUtils metricsUtils = new MetricsUtils();
 
         // input
 //        int[][] m1 = new int[][]{{1, 0}, {0, 1}};
@@ -14,12 +16,12 @@ public class MetricsMultiplication {
         int[][] m1 = new int[][]{{1, 1}};
         int[][] m2 = new int[][]{{1, 2, 3}, {2, 3, 4}};
 
-        utils.printMetrics(m1);
-        utils.printMetrics(m2);
+        metricsUtils.printMetrics(m1);
+        metricsUtils.printMetrics(m2);
         int [][] ans;
         try {
             ans = metricsMultiplication(m1, m2);
-            utils.printMetrics(ans);
+            metricsUtils.printMetrics(ans);
         } catch (Exception e) {
         }
     }

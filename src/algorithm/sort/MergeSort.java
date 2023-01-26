@@ -6,6 +6,11 @@ public class MergeSort {
     public static void main(String[] args) {
         // input
         int[] arr = {5,2,4,1,6,3};
+
+        sort(Arrays.copyOf(arr, arr.length));
+    }
+
+    private static void sort(int[] arr) {
         System.out.println("array before merge sort: " + Arrays.toString(arr));
 
         // method call
@@ -13,7 +18,6 @@ public class MergeSort {
 
         // output
         System.out.println("array after merge: " + Arrays.toString(arr));
-
     }
 
     /**
