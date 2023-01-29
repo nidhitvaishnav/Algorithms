@@ -11,8 +11,8 @@ public class Fibonacci {
 
         // function call
         callFindFibonacci(n, RECURSIVE_FN);
-        callFindFibonacci(n, TOP_DOWN_FN);
         callFindFibonacci(n, MEMOIZED_FN);
+        callFindFibonacci(n, TOP_DOWN_FN);
     }
 
     public static void callFindFibonacci(int input, String function) {
@@ -26,7 +26,7 @@ public class Fibonacci {
         }
 
         // validation
-        System.out.println("fibonacci(" + input + ") = " + fibonacci);
+        System.out.println("With algorithm " + function + ", fibonacci(" + input + ") = " + fibonacci);
     }
 
     private static int findFibonacciRecursive(int n) {
@@ -34,19 +34,6 @@ public class Fibonacci {
             return n;
         }
         return findFibonacciRecursive(n - 1) + findFibonacciRecursive(n - 2);
-    }
-
-    private static int findFibonacciTopDown(int n) {
-        if (n <= 1) {
-            return n;
-        }
-        int[] fibonacci = new int[n];
-        fibonacci[0] = 1;
-        fibonacci[1] = 1;
-        for (int i = 2; i < n; i++) {
-            fibonacci[i] = fibonacci[i - 1] + fibonacci[i - 2];
-        }
-        return fibonacci[n - 1];
     }
 
     private static int findFibonacciMemoized(int n) {
@@ -65,5 +52,18 @@ public class Fibonacci {
             return fibonacci[n];
         }
         return findFibonacciMemoizedAux(fibonacci, n - 1) + findFibonacciMemoizedAux(fibonacci, n - 2);
+    }
+
+    private static int findFibonacciTopDown(int n) {
+        if (n <= 1) {
+            return n;
+        }
+        int[] fibonacci = new int[n];
+        fibonacci[0] = 1;
+        fibonacci[1] = 1;
+        for (int i = 2; i < n; i++) {
+            fibonacci[i] = fibonacci[i - 1] + fibonacci[i - 2];
+        }
+        return fibonacci[n - 1];
     }
 }

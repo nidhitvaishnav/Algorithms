@@ -1,6 +1,6 @@
 package algorithm.metrics;
 
-import utils.MetricsUtils;
+import algorithm.utils.MetricsUtils;
 
 public class MetricsMultiplication {
     public static void main(String[] args) {

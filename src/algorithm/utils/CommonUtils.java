@@ -1,4 +1,4 @@
-package utils;
+package algorithm.utils;
 
 public class CommonUtils {
     public void swap(int[] arr, int i, int j) {

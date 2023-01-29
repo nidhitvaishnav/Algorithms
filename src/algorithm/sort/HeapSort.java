@@ -1,6 +1,6 @@
 package algorithm.sort;
 
-import utils.CommonUtils;
+import algorithm.utils.CommonUtils;
 import java.util.Arrays;
 
 public class HeapSort {

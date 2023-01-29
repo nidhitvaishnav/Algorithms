@@ -1,4 +1,4 @@
-package utils;
+package algorithm.utils;
 
 public class MetricsUtils {
     public static void printMetrics(int[][] metrics) {
