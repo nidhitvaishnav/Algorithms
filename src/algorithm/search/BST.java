@@ -5,11 +5,12 @@ import java.util.Arrays;
 public class BST {
     public static void main(String[] args) {
         int[] input = {1,3,5,7,10,15,16,20,21};
+//        int[] input = {-1,0,3,5,9,12};
 
         System.out.println("input array: " + Arrays.toString(input));
 
         int val = 20;
-        int searchIndex = binarySearchTree(input, 0, input.length - 1, val);
+        int searchIndex = binarySearchTree(input, val);
 
         if (searchIndex == -1) {
             System.out.println("Searched value " + val + " is not found.");
@@ -26,17 +27,15 @@ public class BST {
      *
      * @param arr
      *          integer array
-     * @param firstIndex
-     *          first index of the tree
-     * @param lastIndex
-     *          last index of the tree
      * @param val
      *          search value
      *
      * @return
      *          Index of the array if search value is found, else -1
      */
-    private static int binarySearchTree(final int[] arr, int firstIndex, int lastIndex, final int val) {
+    private static int binarySearchTree(final int[] arr, final int val) {
+        int firstIndex = 0;
+        int lastIndex = arr.length - 1;
         while (firstIndex <= lastIndex) {
             int mid = (firstIndex + lastIndex) / 2;
             if (arr[mid] == val) {

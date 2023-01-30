@@ -146,6 +146,7 @@ public class CutRod {
      */
     private static int findCutRodTopDownApproach(int[] price, int n) {
         int[] maxPrice = new int[n + 1];
+        int[] size = new int [n + 1];
         // base case, if rod length is 0, return 0
         maxPrice[0] = 0;
         // for each rod length, initialize max length with min value
@@ -154,11 +155,22 @@ public class CutRod {
             int maxVal = Integer.MIN_VALUE;
             for (int j = 0; j < i; j++) {
                 int currentRodLength = j + 1;       // index starts from 0, so n=1 is at index 0
-                maxVal = Math.max(maxVal, price[j] + maxPrice[i - currentRodLength]);
+                if (maxVal < price[j] + maxPrice[i - currentRodLength]) {
+                    maxVal = price[j] + maxPrice[i - currentRodLength];
+                    size[i] = currentRodLength;
+                }
             }
             maxPrice[i] = maxVal;
         }
         System.out.println("max Price at each length : " + Arrays.toString(maxPrice));
+        printSizeOfRodCuttingTopDownForN(size, n);
         return maxPrice[n];
+    }
+
+    private static void printSizeOfRodCuttingTopDownForN(int[] size, int n) {
+        while (n > 0) {
+            System.out.println(size[n]);
+            n = n - size[n];
+        }
     }
 }
