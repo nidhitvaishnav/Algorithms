@@ -80,7 +80,7 @@ public class Graph {
     private void dfsTraverse(int source, boolean[] visited) {
         // mark given node as visited
         visited[source] = true;
-        System.out.print(source + " ");
+        System.out.print("(" + source + " ");
 
         // for given node, find all of its adjacent nodes and if they are not visited, visit them
         Node node = this.adj[source];
@@ -91,5 +91,6 @@ public class Graph {
                 dfsTraverse(edgeVal, visited);
             }
         }
+        System.out.print(")");
     }
 }
