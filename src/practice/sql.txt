@@ -1,0 +1,9 @@
+For this challenge your task is to create a simple SELECT statement that will return all columns from the people table,
+then join that result set to the sales table so that you can return the COUNT of all sales and RANK each person by their
+sale_count. In case of ties, sort by id ascending.
+
+SELECT people.id, people.name, COUNT(sales.id) as sale_count,
+rank() OVER (ORDER BY count(sales.id) DESC) as sale_rank
+from people inner join sales
+on people.id = sales.people_id GROUP BY people.id
+ORDER BY sale_count DESC, people.id ASC;
