@@ -87,7 +87,7 @@ public class MetricsChainMultiplication {
     /**
      * Given method performs metrics chain multiplication for given array metrics using recursion, where
      * Metrics Ai has dimension metrics[i-1, i] for i = 1 ... n
-     * with time complexity of O(2^n) - exponential
+     * with time complexity of O(n^3) - exponential
      *
      * @param metrics
      *          Metrics Ai has dimension A[i-1, i] for i = 1 ... n
