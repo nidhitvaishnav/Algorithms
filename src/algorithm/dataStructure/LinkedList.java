@@ -15,8 +15,11 @@ public class LinkedList {
         System.out.println();
     }
 
-    public void insertNodeAtBeginning(int i) {
+    public void insertItemAtBeginning(int i) {
         Node node = new Node(i);
+        insertNodeAtBeginning(node);
+    }
+    public void insertNodeAtBeginning(Node node) {
         if (this.head == null) {
             this.head = node;
         } else {
@@ -26,8 +29,12 @@ public class LinkedList {
         }
     }
 
-    public void insertNodeAtEnd(int i) {
+    public void insertItem(int i) {
         Node node = new Node(i);
+        insertNodeAtEnd(node);
+    }
+
+    public void insertNodeAtEnd(Node node) {
         if (this.head == null) {
             this.head = node;
         } else {
@@ -94,5 +101,25 @@ public class LinkedList {
         } else {
             node.prev.next = node.next;
         }
+    }
+
+    public boolean isCyclic() {
+        if (this.head == null || this.head.next == null) {
+            return false;       // no cycle as list is empty or have 1 item
+        }
+        Node current = this.head;
+        Node fast = this.head.next;
+        while(current.next != null) {
+            if (current == fast) {
+                return true;        // cycle is detected
+            }
+            current = current.next;
+            if (fast.next == null || fast.next.next == null) {
+                return false;       // we reached at the end, no cycle
+            }
+            fast = fast.next.next;
+        }
+
+        return false;
     }
 }
