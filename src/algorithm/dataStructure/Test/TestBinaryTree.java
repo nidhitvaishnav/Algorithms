@@ -2,6 +2,8 @@ package algorithm.dataStructure.Test;
 
 import algorithm.dataStructure.BinaryTree;
 import algorithm.dataStructure.BinaryTree.Node;
+import java.util.List;
+
 public class TestBinaryTree {
     public static void main(String[] args) {
         BinaryTree tree = new BinaryTree();
@@ -32,8 +34,17 @@ public class TestBinaryTree {
         Node max = tree.getMaximumNodeOfTree();
         printNode(max);
 
-        tree.deleteKey(5);
-        tree.printTree();
+//        tree.deleteKey(5);
+//        tree.printTree();
+
+        List<Integer> preOrderList = tree.preOrderTraversal();
+        System.out.println(preOrderList);
+
+        List<Integer> inOrderList = tree.inOrderTraversal();
+        System.out.println(inOrderList);
+
+        List<Integer> postOrderList = tree.postOrderTraversal();
+        System.out.println(postOrderList);
     }
 
 

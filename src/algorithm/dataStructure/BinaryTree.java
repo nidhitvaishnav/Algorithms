@@ -1,5 +1,8 @@
 package algorithm.dataStructure;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class BinaryTree {
 
     public class Node {
@@ -145,5 +148,59 @@ public class BinaryTree {
         if (nodeToTransplant != null) {
             nodeToTransplant.parent = oldNode.parent;
         }
+    }
+
+    public List<Integer> inOrderTraversal() {
+        List<Integer> solution = new ArrayList<>();
+
+        //function call
+        performInOrderTraversal(this.root, solution);
+
+        return solution;
+    }
+
+    private void performInOrderTraversal(Node node, List<Integer> solution) {
+        if (node == null) {
+            return;
+        }
+        performInOrderTraversal(node.left, solution);
+        solution.add(node.key);
+        performInOrderTraversal(node.right, solution);
+    }
+
+    public List<Integer> preOrderTraversal() {
+        List<Integer> solution = new ArrayList<>();
+
+        //function call
+        performPreOrderTraversal(this.root, solution);
+
+        return solution;
+    }
+
+    private void performPreOrderTraversal(Node node, List<Integer> solution) {
+        if (node == null) {
+            return;
+        }
+        solution.add(node.key);
+        performPreOrderTraversal(node.left, solution);
+        performPreOrderTraversal(node.right, solution);
+    }
+
+    public List<Integer> postOrderTraversal() {
+        List<Integer> solution = new ArrayList<>();
+
+        //function call
+        performPostOrderTraversal(this.root, solution);
+
+        return solution;
+    }
+
+    private void performPostOrderTraversal(Node node, List<Integer> solution) {
+        if (node == null) {
+            return;
+        }
+        performPostOrderTraversal(node.left, solution);
+        performPostOrderTraversal(node.right, solution);
+        solution.add(node.key);
     }
 }
